@@ -1,0 +1,23 @@
+<!--Für bootstrap-->
+<div class="container">
+  <h1>Login Form</h1>
+  <!--entryForm legtn eine Varibale loginForm vom Typ "ng Form" an-->
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="account">Account.ts</label>
+      <input type="text" class="form-control" id="account" [(ngModel)]="model.account" name="account" required #vName="ngModel">
+      <div [hidden]="vName.valid || vName.pristine" class="alert alert-danger">
+        Account.ts is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" required
+             #vAge="ngModel">
+      <div [hidden]="!vAge.control.hasError('required') || vAge.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Login</button>
+  </form>
+</div>
